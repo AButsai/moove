@@ -1,0 +1,159 @@
+.modal__container {
+  @media (min-width: 768px) {
+    display: flex;
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+.modal__img {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  object-fit: cover;
+
+  @media (min-width: 768px) {
+    width: 264px;
+    height: 373px;
+    margin-right: 68px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 375px;
+    height: 478px;
+    margin-right: 16px;
+  }
+}
+
+.modal__content {
+}
+
+.modal__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.modal__list {
+  margin-bottom: 20px;
+}
+
+.modal__item {
+  margin-bottom: 8px;
+  // width: 215px;
+  display: flex;
+  // justify-content: space-between;
+}
+
+.modal__text {
+  display: block;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: $text-popap;
+  width: 69px;
+  margin-right: 39px;
+}
+
+.modal__votes-text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.modal__vote {
+  height: 16px;
+  padding: 1px 10px 1px 10px;
+  border-radius: 5px;
+  color: $color-white;
+  background-color: $bg-modal-active-btn;
+  margin-right: 5px;
+}
+
+.modal__vote--votes {
+  color: $color-black;
+  background-color: $bg-footer;
+  padding: 1px 4px 1px 4px;
+  margin-left: 5px;
+}
+
+.modal__votes--title {
+  text-transform: uppercase;
+}
+
+.modal__content-wrap {
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1024px) {
+  }
+}
+
+.modal__content-title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+
+  margin-bottom: 8px;
+}
+
+.modal__content-description {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.modal__buttons {
+}
+
+.modal__btn {
+  width: 110px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  padding: 6px 27px;
+  margin-right: 9px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid $color-black;
+  background-color: transparent;
+
+  @media (min-width: 768px) {
+    width: 125px;
+    margin-right: 15px;
+    padding: 14px 9px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 136px;
+  }
+}
+
+.modal__btn--margin {
+  margin-right: 0;
+}
+
+.modal__btn:hover,
+.modal__btn:focus-within {
+  border: 1px solid $bg-active;
+  background-color: $bg-active;
+  color: $color-white;
+}
+
+.is-watched {
+  background: $bg-modal-active-btn;
+  color: $color-white;
+  border: 1px solid $bg-active;
+}

@@ -1,0 +1,68 @@
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+
+// Стили для файла с примером HTML-фрагмента
+// Variables
+@import './variables/variables';
+// Base
+@import './base/reset';
+@import './base/base';
+// Header
+@import './header-main/header';
+
+@import './card/card';
+@import './containerCards/containerCards';
+@import './modal/modal';
+@import './modalContentCard/modalContentCard';
+@import './loader/loader';
+//
+//
+//
+//
+//
+//
+// Header library
+//
+//
+//
+//
+//
+//
+// Container Card
+//
+//
+//
+//
+//
+//
+//
+// One Card
+//
+//
+//
+//
+//
+// Footer
+@import './footer/footer';
+//
+//
+//
+//
+//
+// Modal
+//
+//
+//
+//
+//
+// Spinner and infiniti
+
+//
+//
+//
+//
+//
+//
+//

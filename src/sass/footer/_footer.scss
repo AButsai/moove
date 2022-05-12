@@ -1,0 +1,76 @@
+.footer {
+  width: 320px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 28.71px;
+  padding-bottom: 29.7px;
+  background-color: $bg-footer;
+  text-align: center;
+
+  transform: translateY(0);
+  transition: transform 300ms ease-in-out;
+
+  @media (min-width: 768px) {
+    width: 768px;
+    padding-top: 30px;
+    padding-bottom: 28px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
+}
+
+.footer__show {
+  transform: translateY(100%);
+}
+
+.footer__text {
+  font-weight: 400;
+  @media (min-width: 768px) {
+    display: inline;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+
+.footer__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9.9px;
+
+  @media (min-width: 768px) {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+.footer__svg {
+  width: 14px;
+  height: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  animation-name: anime;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes anime {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.35);
+  }
+}
+
+.footer__link {
+  text-decoration: underline;
+}

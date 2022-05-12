@@ -1,0 +1,47 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.modal {
+  position: relative;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px);
+  padding: 48px 20px 40px;
+  background-color: $color-white;
+  overflow: auto;
+
+  @media (min-width: 768px) {
+    width: 704px;
+    padding: 40px 72px 40px 36px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 814px;
+    padding: 40px 16px;
+  }
+}
+
+.modal__close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.modsl__svg {
+  width: 30px;
+  height: 30px;
+}

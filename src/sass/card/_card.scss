@@ -1,0 +1,32 @@
+.gallery__item {
+}
+
+.gallery__link {
+  display: block;
+  transition: transform 250ms ease-in-out;
+}
+
+.gallery__link:hover {
+  transform: scale(1.03);
+}
+
+.gallery__img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.gallery__title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.gallery__genres {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: $bg-active;
+}
