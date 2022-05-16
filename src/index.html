@@ -17,19 +17,24 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="up">
       <include src="./partials/header/header.html"></include>
+      <include src="./partials/swiper/swiper.html"></include>
       <main class="main">
         <div id="root"></div>
-        <div></div>
+        <include src="./partials/linkUp/link-up.html"></include>
       </main>
       <include src="./partials/modal/modal.html"></include>
+      <include src="./partials/modal/overlayTraler.html"></include>
       <include src="./partials/footer/footer.html"></include>
     </div>
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>

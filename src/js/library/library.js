@@ -2,13 +2,16 @@ import getRefs from '../refs/getRefs.js';
 import marcupContainerCards from '../containerCards/containerCards.js';
 import { KEY_WATCHED, KEY_QUEUE, getItemLocalstorage, iterateArray } from '../helpers/helpers.js';
 
-const { libraryWatched, libraryQueue, libraryLink, root } = getRefs();
+const { libraryWatched, libraryQueue, libraryLink, root, homeLink } = getRefs();
 
 const watched = getItemLocalstorage(KEY_WATCHED);
 const queue = getItemLocalstorage(KEY_QUEUE);
 
 let watchedForRender = [];
 let queuesForRender = [];
+
+let isWatched = false;
+let isQueue = false;
 
 function addInArrayFromLocalstorage(array1, array2) {
   array1.push(...array2);
@@ -27,12 +30,16 @@ export function saveFilmsForQueue(film) {
 
 export function deleteFilmsForWatched(id) {
   watchedForRender = iterateArray(watchedForRender, id);
-  marcupContainerCards(watchedForRender);
+  if (isWatched) {
+    marcupContainerCards(watchedForRender);
+  }
 }
 
 export function deleteFilmsForQueue(id) {
   queuesForRender = iterateArray(queuesForRender, id);
-  marcupContainerCards(queuesForRender);
+  if (isQueue) {
+    marcupContainerCards(queuesForRender);
+  }
 }
 
 export function checkFilmsForWatched(id) {
@@ -55,6 +62,7 @@ function iterateLocalstorage(id, arr) {
 const handleLibrary = () => {
   root.innerHTML = '';
   marcupContainerCards(watchedForRender);
+  isWatched = true;
 };
 
 libraryWatched.addEventListener('click', handleLibrary);
@@ -63,4 +71,14 @@ libraryLink.addEventListener('click', handleLibrary);
 libraryQueue.addEventListener('click', () => {
   root.innerHTML = '';
   marcupContainerCards(queuesForRender);
+  isQueue = true;
+});
+
+homeLink.forEach(link => {
+  link.addEventListener('click', () => {
+    isWatched = false;
+    isQueue = false;
+    libraryWatched.classList.add('active-btn');
+    libraryQueue.classList.remove('active-btn');
+  });
 });

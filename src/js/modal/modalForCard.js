@@ -1,6 +1,7 @@
 import { modalCloseEsc } from './modalClose.js';
-import { PATH_IMAGE, ganres } from '../helpers/helpers.js';
+import { PATH_IMAGE, ganres, KEY_LAUNGES } from '../helpers/helpers.js';
 import { checkFilmsForWatched, checkFilmsForQueue } from '../library/library.js';
+import { languageForBtnModal } from './languageForBtnModal.js';
 
 function popularityToFixed(num) {
   return num.toFixed(1);
@@ -11,6 +12,9 @@ const marcupCardInModal = data => {
   const isQueue = checkFilmsForQueue(data.id);
 
   window.addEventListener('keydown', modalCloseEsc);
+
+  const { watched, watchedRemove, queue, queueRemove } = languageForBtnModal;
+  const keyLanguage = localStorage.getItem(KEY_LAUNGES);
 
   const {
     genres,
@@ -54,24 +58,31 @@ const marcupCardInModal = data => {
         <div class="modal__buttons">
         ${
           isWatched
-            ? `<button class="modal__btn js-watched is-watched" type="button">
-              remove Watched
+            ? `<button class="modal__btn js-watched is-watched" type="button" data-watched="wathed">
+              ${watchedRemove[keyLanguage]}
             </button>`
-            : `<button class="modal__btn js-watched" type="button" ${isQueue && `disabled`}>
-              add to Watched
+            : `<button class="modal__btn js-watched" type="button" ${
+                isQueue && `disabled`
+              } data-watched="wathed">
+              ${watched[keyLanguage]}
             </button>`
         }
         ${
           isQueue
-            ? ` <button class="modal__btn modal__btn--margin js-queue is-watched" type="button">
-              remove queue
+            ? ` <button class="modal__btn modal__btn--margin js-queue is-watched" type="button" data-queue="queue">
+              ${queueRemove[keyLanguage]}
             </button>`
             : ` <button class="modal__btn modal__btn--margin js-queue" type="button"${
                 isWatched && `disabled`
-              }>
-              add to queue
+              } data-queue="queue">
+              ${queue[keyLanguage]}
             </button>`
         }
+        </div>
+
+        <div class="modal__play-wrap">
+          <button class="btn__play-modal" type="button"></button>
+          <p class="modal__play-text">Play trailer</p>
         </div>
       </div>
     </div>

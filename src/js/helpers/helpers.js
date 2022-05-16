@@ -1,6 +1,7 @@
 export const PATH_IMAGE = 'https://image.tmdb.org/t/p/w1280';
 export const KEY_WATCHED = 'watched';
 export const KEY_QUEUE = 'queue';
+export const KEY_LAUNGES = 'launges';
 
 export function ganres(data) {
   if (data.length > 2) {

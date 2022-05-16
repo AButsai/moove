@@ -1,6 +1,8 @@
+import ApiResponse from '../service/ApiResponse.js';
 import getRefs from '../refs/getRefs.js';
 import createLiElement from '../card/renderCard.js';
 import marcupCardInModal from '../modal/modalForCard.js';
+import { createPlayer } from '../player/player.js';
 import {
   saveFilmsForWatched,
   saveFilmsForQueue,
@@ -14,15 +16,20 @@ import {
   deleteFromLocalstorageWatched,
   deleteFromLocalstorageQueue,
 } from '../localstorege/deleteFilmFromLocalstorage.js';
+import { KEY_LAUNGES } from '../helpers/helpers.js';
+import { languageForTextLibrary } from './laungues.js';
 
-const { root, overlay, containerCard } = getRefs();
+const { root, overlay, containerCard, closeModal, body, modal } = getRefs();
+const response = new ApiResponse();
 
 const marcupContainerCards = (data = []) => {
+  const { text } = languageForTextLibrary;
+  const keyLanguage = localStorage.getItem(KEY_LAUNGES);
   const createUlContainer = `
     <div class="container container__cards">
     ${
       data.length === 0
-        ? `<h2 class="library__info">You haven't selected any movies yet!</h2>`
+        ? `<h2 class="library__info">${text[keyLanguage]}</h2>`
         : `<ul class="gallery__list">${data.map(createLiElement).join('')}</ul>
         <div class="spinner hidden">
           <div class="spinner__ring"></div>
@@ -34,7 +41,35 @@ const marcupContainerCards = (data = []) => {
       `;
 
   root.innerHTML = createUlContainer;
-  // root.insertAdjacentHTML('beforeend', createUlContainer);
+
+  const getVideoInPopap = () => {
+    overlay.classList.remove('visually-hidden');
+    modal.classList.add('activ-tralier');
+    containerCard.innerHTML = '';
+    response.getVideoById().then(id => {
+      containerCard.innerHTML = createPlayer(id);
+
+      const modalClosed = () => {
+        containerCard.innerHTML = createPlayer('');
+        modal.classList.remove('activ-tralier');
+      };
+      closeModal.addEventListener('click', modalClosed);
+      overlay.addEventListener('click', e => {
+        if (e.target === e.currentTarget) {
+          modalClosed();
+        }
+      });
+    });
+  };
+
+  const linksPlay = document.querySelectorAll('.btn__play-card');
+  linksPlay.forEach(play => {
+    play.addEventListener('click', e => {
+      const id = e.currentTarget.value;
+      response.videoIdForPopap(id);
+      getVideoInPopap();
+    });
+  });
 
   function addVisuallyHiddenToOverlay() {
     overlay.classList.add('visually-hidden');
@@ -46,11 +81,18 @@ const marcupContainerCards = (data = []) => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const idFromImg = e.currentTarget.id;
-      data.filter(film => {
+
+      data.map(film => {
         if (film.id.toString() === idFromImg) {
+          body.classList.add('isOpenModal');
           overlay.classList.remove('visually-hidden');
           containerCard.innerHTML = '';
           containerCard.innerHTML = marcupCardInModal(film);
+          const modalBtnPlayVideo = document.querySelector('.btn__play-modal');
+          modalBtnPlayVideo.addEventListener('click', () => {
+            response.videoIdForPopap(idFromImg);
+            getVideoInPopap();
+          });
 
           const watched = document.querySelector('.js-watched');
           const queue = document.querySelector('.js-queue');
@@ -58,7 +100,10 @@ const marcupContainerCards = (data = []) => {
           const isWatched = checkFilmsForWatched(id);
           const isQueue = checkFilmsForQueue(id);
 
-          watched.addEventListener('click', () => {
+          watched.addEventListener('click', e => {
+            e.preventDefault();
+            body.classList.remove('isOpenModal');
+
             if (isWatched) {
               deleteFromLocalstorageWatched(id);
               deleteFilmsForWatched(id);
@@ -71,7 +116,9 @@ const marcupContainerCards = (data = []) => {
             addVisuallyHiddenToOverlay();
           });
 
-          queue.addEventListener('click', () => {
+          queue.addEventListener('click', e => {
+            e.preventDefault();
+            body.classList.remove('isOpenModal');
             if (isQueue) {
               deleteFromLocalstorageQueue(id);
               deleteFilmsForQueue(id);

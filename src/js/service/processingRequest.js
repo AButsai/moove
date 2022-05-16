@@ -2,6 +2,7 @@ import fetchGenres from './genresResponse.js';
 import ApiResponse from './ApiResponse.js';
 import marcupContainerCards from '../containerCards/containerCards.js';
 import infinitiObserver from '../infinitiObserver/infinitiObserver.js';
+import smoothScroll from '../helpers/smoothScroll.js';
 
 import Notiflix from 'notiflix';
 import getRefs from '../refs/getRefs.js';
@@ -32,9 +33,13 @@ processingRequest();
 
 homeLink.forEach(link => {
   link.addEventListener('click', () => {
+    console.log('click');
+    arrayObjectsFims = [];
+    response.page = 1;
+    response.searchName = '';
+    response._paramSearch = 'movie/popular';
     root.innerHTML = '';
-    marcupContainerCards(arrayObjectsFims);
-    infinitiObserver();
+    processingRequest();
   });
 });
 
@@ -62,9 +67,9 @@ const createArrayObjects = async (films, genres) => {
 
   arrayFilms
     .filter(film => {
-      const { overview, poster_path, vote_average, title } = film;
+      const { poster_path, vote_average, title } = film;
 
-      if ((poster_path !== null && overview !== '') || (poster_path !== '' && overview !== '')) {
+      if (poster_path !== null || poster_path !== '') {
         if (
           (poster_path !== null && vote_average !== 0) ||
           (poster_path !== '' && vote_average !== 0)
@@ -117,8 +122,9 @@ const createArrayObjects = async (films, genres) => {
     return Notiflix.Notify.failure('No film with this title has been found. Try again!');
   }
 
-  // console.log('arrayObjectsFims :>> ', arrayObjectsFims);
-
   marcupContainerCards(arrayObjectsFims);
   infinitiObserver();
+  if (response.page !== 2) {
+    smoothScroll();
+  }
 };

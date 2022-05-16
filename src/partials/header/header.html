@@ -10,17 +10,22 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item">
-            <a class="nav__link active-link" href="#" data-home>Home</a>
+            <a class="nav__link active-link lang__home" href="#" data-home>Home</a>
           </li>
           <li class="nav__item nav__item--margin">
-            <a class="nav__link" href="#" data-library>my library</a>
+            <a class="nav__link lang__library" href="#" data-library>my library</a>
           </li>
         </ul>
       </nav>
     </div>
     <form class="form">
       <label class="form__label">
-        <input type="text" name="name" class="form__input" placeholder="Поиск фильмов" />
+        <input
+          type="text"
+          name="name"
+          class="form__input lang_placeholder"
+          placeholder="Поиск фильмов"
+        />
       </label>
       <button class="form__btn" type="submit">
         <svg class="form__svg">
@@ -30,8 +35,16 @@
     </form>
 
     <div class="library__btns hidden">
-      <button class="library__btn active-btn" type="button" data-watched>Watched</button>
-      <button class="library__btn library__btn--margin" type="button" data-queue>queue</button>
+      <button class="library__btn active-btn lang__watched" type="button" data-watched>
+        Watched
+      </button>
+      <button class="library__btn library__btn--margin lang__queue" type="button" data-queue>
+        queue
+      </button>
     </div>
+  </div>
+
+  <div class="container__select">
+    <div class="container__selected"></div>
   </div>
 </header>

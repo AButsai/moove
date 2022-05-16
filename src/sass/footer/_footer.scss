@@ -7,7 +7,8 @@
   margin: 0 auto;
   padding-top: 28.71px;
   padding-bottom: 29.7px;
-  background-color: $bg-footer;
+  background-color: $color-black;
+  color: $text-footer-dark;
   text-align: center;
 
   transform: translateY(0);
@@ -20,7 +21,7 @@
   }
 
   @media (min-width: 1024px) {
-    width: 1024px;
+    width: 1400px;
   }
 }
 

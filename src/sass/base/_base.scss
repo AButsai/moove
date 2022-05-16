@@ -1,9 +1,19 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: $font-family;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
   color: $color-black;
+  // background-color: $bg-body;
+  background-color: black;
+}
+
+body.isOpenModal {
+  overflow: hidden;
 }
 
 .container {
@@ -19,7 +29,7 @@ body {
   }
 
   @media (min-width: 1024px) {
-    max-width: 1024px;
+    max-width: 1400px;
   }
 }
 

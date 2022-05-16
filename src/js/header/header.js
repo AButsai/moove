@@ -1,6 +1,15 @@
 import getRefs from '../refs/getRefs.js';
 
-const { homeLink, header, libraryLink, form, buttons, libraryQueue, libraryWatched } = getRefs();
+const {
+  homeLink,
+  header,
+  libraryLink,
+  form,
+  buttons,
+  libraryQueue,
+  libraryWatched,
+  containerSelect,
+} = getRefs();
 
 libraryLink.addEventListener('click', () => {
   header.classList.add('library');
@@ -8,6 +17,7 @@ libraryLink.addEventListener('click', () => {
   buttons.classList.remove('hidden');
   homeLink[1].classList.remove('active-link');
   libraryLink.classList.add('active-link');
+  containerSelect.classList.add('hidden');
 });
 
 homeLink.forEach(link => {
@@ -17,6 +27,7 @@ homeLink.forEach(link => {
     buttons.classList.add('hidden');
     libraryLink.classList.remove('active-link');
     homeLink[1].classList.add('active-link');
+    containerSelect.classList.remove('hidden');
   });
 });
 
