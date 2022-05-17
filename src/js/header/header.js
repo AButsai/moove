@@ -9,7 +9,6 @@ const {
   libraryQueue,
   libraryWatched,
   containerSelect,
-  containerCardGallery,
   root,
 } = getRefs();
 
