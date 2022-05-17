@@ -3,7 +3,11 @@ import { changeLanguage } from './pageTranslation.js';
 import getRefs from '../refs/getRefs.js';
 
 const { containerSelected } = getRefs();
-const laungesFromLocalStorage = localStorage.getItem(KEY_LAUNGES);
+let laungesFromLocalStorage = localStorage.getItem(KEY_LAUNGES);
+
+if (!laungesFromLocalStorage) {
+  laungesFromLocalStorage = 'en-US';
+}
 
 changeLanguage();
 

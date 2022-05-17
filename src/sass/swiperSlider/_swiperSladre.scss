@@ -36,7 +36,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(226, 172, 121, 0.7);
+  background-color: rgba(226, 172, 121, 0.8);
   border-radius: 5px;
   padding: 10px 5px;
   color: $color-black;
@@ -47,7 +47,8 @@
 .swipers__title {
   font-weight: 600;
   font-size: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  text-align: center;
   @media (min-width: 768px) {
     font-size: 16px;
   }

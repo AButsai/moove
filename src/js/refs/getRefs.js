@@ -11,6 +11,8 @@ function getRefs() {
     header: document.querySelector('.header'),
     buttons: document.querySelector('.library__btns'),
 
+    // Gallery
+    containerCardGallery: document.querySelector('.container__cards'),
     // Root
     root: document.querySelector('#root'),
 

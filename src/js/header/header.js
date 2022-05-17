@@ -9,15 +9,19 @@ const {
   libraryQueue,
   libraryWatched,
   containerSelect,
+  containerCardGallery,
+  root,
 } = getRefs();
 
-libraryLink.addEventListener('click', () => {
+libraryLink.addEventListener('click', e => {
+  console.log('e :>> ', e);
   header.classList.add('library');
   form.classList.add('hidden');
   buttons.classList.remove('hidden');
   homeLink[1].classList.remove('active-link');
   libraryLink.classList.add('active-link');
   containerSelect.classList.add('hidden');
+  root.classList.add('cards-padding');
 });
 
 homeLink.forEach(link => {
@@ -28,6 +32,7 @@ homeLink.forEach(link => {
     libraryLink.classList.remove('active-link');
     homeLink[1].classList.add('active-link');
     containerSelect.classList.remove('hidden');
+    root.classList.remove('cards-padding');
   });
 });
 

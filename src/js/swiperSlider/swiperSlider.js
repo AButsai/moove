@@ -15,6 +15,7 @@ const getImgForSwiper = async () => {
       .then(response => response.data.results);
 
     poster(responsForSwiper);
+
     const swiper = new Swiper('.swiper', {
       slidesPerView: 5.5,
       spaceBetween: 15,
@@ -69,6 +70,14 @@ const getImgForSwiper = async () => {
         })(),
       },
     });
+
+    swiperContainer.addEventListener('mouseover', () => {
+      swiper.autoplay.stop();
+    });
+    swiperContainer.addEventListener('mouseout', () => {
+      swiper.autoplay.start();
+    });
+
     libraryLink.addEventListener('click', () => {
       swiperContainer.classList.add('visually-hidden');
     });
@@ -89,10 +98,10 @@ function poster(data) {
 }
 
 function substringString(str) {
-  if (str.length < 230) {
+  if (str.length < 400) {
     return str;
   }
-  return str.substr(0, 200) + ' ...';
+  return str.substr(0, 410) + ' ...';
 }
 
 getImgForSwiper();
