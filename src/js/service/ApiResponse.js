@@ -19,6 +19,9 @@ class ApiResponse {
     const response = await fetch(url);
     const data = await response.json();
     if (!data.results[1]) {
+      if (!data.results[0]) {
+        return -1;
+      }
       return data.results[0].key;
     }
     return data.results[1].key;

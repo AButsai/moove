@@ -43,6 +43,16 @@
   }
 }
 
+.header__container {
+  width: 320px;
+  @media (min-width: 768px) {
+    width: 768px;
+  }
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
+}
+
 .header__show {
   transform: translateY(-100%);
 }
