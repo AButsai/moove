@@ -5,3 +5,4 @@ import './js/library/library.js';
 import './js/helpers/headerFooterHide.js';
 import './js/selected/selected.js';
 import './js/swiperSlider/swiperSlider.js';
+import './js/devel-mod/dev-modal.js';
