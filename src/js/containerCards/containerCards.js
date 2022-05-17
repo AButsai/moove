@@ -24,7 +24,10 @@ const response = new ApiResponse();
 
 const marcupContainerCards = (data = []) => {
   const { text } = languageForTextLibrary;
-  const keyLanguage = localStorage.getItem(KEY_LAUNGES);
+  let keyLanguage = localStorage.getItem(KEY_LAUNGES);
+  if (!keyLanguage) {
+    keyLanguage = 'en-US';
+  }
   const createUlContainer = `
     <div class="container container__cards">
     ${

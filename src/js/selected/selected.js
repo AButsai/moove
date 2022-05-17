@@ -9,8 +9,6 @@ if (!laungesFromLocalStorage) {
   laungesFromLocalStorage = 'en-US';
 }
 
-changeLanguage();
-
 const laungueses = [
   {
     name: 'en-US',
@@ -61,6 +59,8 @@ const optionList = document.querySelectorAll('.options');
 selected.addEventListener('click', () => {
   optionContainer.classList.toggle('options__active');
 });
+
+changeLanguage();
 
 optionList.forEach(el => {
   el.addEventListener('change', e => {

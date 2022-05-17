@@ -24,7 +24,10 @@ const translation = {
 };
 
 export function changeLanguage() {
-  const language = localStorage.getItem(KEY_LAUNGES);
+  let language = localStorage.getItem(KEY_LAUNGES);
+  if (!language) {
+    language = 'en-US';
+  }
   document.querySelector('.lang_placeholder').placeholder = translation.placeholder[language];
   for (let key in translation) {
     if (key === 'placeholder') {

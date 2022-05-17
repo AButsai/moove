@@ -14,7 +14,11 @@ const marcupCardInModal = data => {
   window.addEventListener('keydown', modalCloseEsc);
 
   const { watched, watchedRemove, queue, queueRemove } = languageForBtnModal;
-  const keyLanguage = localStorage.getItem(KEY_LAUNGES);
+  let keyLanguage = localStorage.getItem(KEY_LAUNGES);
+
+  if (!keyLanguage) {
+    keyLanguage = 'en-US';
+  }
 
   const {
     genres,
