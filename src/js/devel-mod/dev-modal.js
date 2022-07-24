@@ -7,6 +7,7 @@ const link = document.querySelector('.footer__link');
 
 link.addEventListener('click', () => {
   overlay.classList.remove('visually-hidden');
+  overlay.classList.add('isScroll');
   modal.classList.add('isOpenModal');
   containerCard.innerHTML = '';
   containerCard.innerHTML = ul(data);
