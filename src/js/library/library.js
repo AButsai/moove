@@ -4,8 +4,8 @@ import { KEY_WATCHED, KEY_QUEUE, getItemLocalstorage, iterateArray } from '../he
 
 const { libraryWatched, libraryQueue, libraryLink, root, homeLink } = getRefs();
 
-const watched = getItemLocalstorage(KEY_WATCHED);
-const queue = getItemLocalstorage(KEY_QUEUE);
+let watched = getItemLocalstorage(KEY_WATCHED);
+let queue = getItemLocalstorage(KEY_QUEUE);
 
 let watchedForRender = [];
 let queuesForRender = [];
@@ -14,7 +14,9 @@ let isWatched = false;
 let isQueue = false;
 
 function addInArrayFromLocalstorage(array1, array2) {
-  array1.push(...array2);
+  if (watched.lenght !== 0 || queue.length !== 0) {
+    array1.push(...array2);
+  }
 }
 
 addInArrayFromLocalstorage(watchedForRender, watched);

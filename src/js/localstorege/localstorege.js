@@ -2,7 +2,6 @@ import { KEY_WATCHED, KEY_QUEUE, KEY_LAUNGES } from '../helpers/helpers.js';
 
 function localStoregSave(key, obj) {
   if (typeof obj === 'string') {
-    console.log('obj :>> ', obj);
     localStorage.setItem(key, obj);
   }
 
